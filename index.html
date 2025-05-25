@@ -301,6 +301,17 @@
                 font-size: 1.8rem;
             }
         }
+
+        .uber-button:focus, .uber-tab:focus, .uber-accordion-header:focus {
+            outline: 2px solid var(--uber-green);
+            outline-offset: 2px;
+        }
+        .uber-accordion-header[aria-expanded="true"] {
+            background: rgba(0, 212, 138, 0.08);
+        }
+        .uber-accordion-content.hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -368,7 +379,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td colspan="4" class="font-semibold bg-stone-200">Imaging Evaluations</td></tr>
+                            <tr><td colspan="4" class="font-semibold">Imaging Evaluations</td></tr>
                             <tr><td>MIMIC CXR - Average F1 for top 5 conditions</td><td>88.9</td><td>81.1</td><td></td></tr>
                             <tr><td>CheXpert CXR - Average F1 for top 5 conditions</td><td>48.1</td><td>31.2</td><td></td></tr>
                             <tr><td>DermMCQA - Accuracy</td><td>71.8</td><td>42.6</td><td></td></tr>
@@ -376,10 +387,10 @@
                             <tr><td>VQA-Rad (radiology) - Tokenized F1</td><td>49.9</td><td>38.6</td><td></td></tr>
                             <tr><td>PathMCQA (histopathology) - Accuracy</td><td>69.8</td><td>37.1</td><td></td></tr>
                             <tr><td>MedXpertQA (text + multimodal questions) - Accuracy</td><td>18.8</td><td>16.4</td><td></td></tr>
-                            <tr><td colspan="4" class="font-semibold bg-stone-200">Chest X-ray Report Generation</td></tr>
+                            <tr><td colspan="4" class="font-semibold">Chest X-ray Report Generation</td></tr>
                             <tr><td>MIMIC CXR - RadGraph F1</td><td>29.5 (pre-trained)</td><td>0.12 (instruction-tuned)</td><td>PaliGemma 2 3B (tuned for CXR): 28.8, PaliGemma 2 10B (tuned for CXR): 29.5</td></tr>
                             <tr><td colspan="4" class="text-xs italic">Note: Instruction-tuned versions of MedGemma 4B and Gemma 3 4B achieve lower scores for CXR report generation (0.22 and 0.12, respectively) due to differences in reporting style compared to MIMIC ground truth reports. Further fine-tuning on MIMIC reports is suggested for improved performance.</td></tr>
-                            <tr><td colspan="4" class="font-semibold bg-stone-200">Text Evaluations</td></tr>
+                            <tr><td colspan="4" class="font-semibold">Text Evaluations</td></tr>
                             <tr><td>MedQA (4-op)</td><td>64.4</td><td>50.7</td><td></td></tr>
                             <tr><td>MedMCQA</td><td>55.7</td><td>45.4</td><td></td></tr>
                             <tr><td>PubMedQA</td><td>73.4</td><td>68.4</td><td></td></tr>
@@ -706,7 +717,7 @@
                         </div>
                         <div class="uber-accordion-content" data-content="Regulatory Compliance: Strict adherence to HIPAA (US), GDPR (EU), and FDA SaMD regulations is vital. MedGemma's 'not clinical grade' status means developers bear responsibility for validation and approval. A 'regulatory-by-design' approach, anticipating changes and designing for auditability, is crucial for market entry.">
                             <p>Strict adherence to HIPAA (US), GDPR (EU), and FDA SaMD regulations is vital. MedGemma's "not clinical grade" status means developers bear responsibility for validation and approval. A "regulatory-by-design" approach, anticipating changes and designing for auditability, is crucial for market entry.</p>
-                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="loading-spinner"></div></button>
+                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="uber-spinner"></div></button>
                             <div class="llm-response-area hidden"></div>
                         </div>
                     </div>
@@ -717,7 +728,7 @@
                         </div>
                         <div class="uber-accordion-content" data-content="Ethical AI Frameworks: Building trust requires mitigating bias (diverse data, fairness-aware design), ensuring transparency/explainability (XAI), managing hallucinations (safeguards, human oversight), emphasizing human participation, and defining liability. Prioritizing ethical design builds competitive advantage.">
                             <p>Building trust requires mitigating bias (diverse data, fairness-aware design), ensuring transparency/explainability (XAI), managing hallucinations (safeguards, human oversight), emphasizing human participation, and defining liability. Prioritizing ethical design builds competitive advantage.</p>
-                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="loading-spinner"></div></button>
+                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="uber-spinner"></div></button>
                             <div class="llm-response-area hidden"></div>
                         </div>
                     </div>
@@ -728,7 +739,7 @@
                         </div>
                         <div class="uber-accordion-content" data-content="Robust Data Strategy: Fine-tuning MedGemma requires high-quality, diverse, task-specific medical datasets. This involves strategic partnerships, rigorous data governance (privacy, security, quality control), and systems for continuous learning from real-world data. Synthetic data generation can augment scarce datasets. This forms a competitive moat.">
                             <p>Fine-tuning MedGemma requires high-quality, diverse, task-specific medical datasets. This involves strategic partnerships, rigorous data governance (privacy, security, quality control), and systems for continuous learning from real-world data. Synthetic data generation can augment scarce datasets. This forms a competitive moat.</p>
-                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="loading-spinner"></div></button>
+                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="uber-spinner"></div></button>
                             <div class="llm-response-area hidden"></div>
                         </div>
                     </div>
@@ -739,7 +750,7 @@
                         </div>
                         <div class="uber-accordion-content" data-content="Interoperability & Integration: Seamless integration with fragmented healthcare IT (EHRs, PACS, LIS) is non-negotiable. Requires robust APIs, adherence to standards (FHIR, DICOM), and minimizing workflow disruption. Products simplifying integration gain a significant edge.">
                             <p>Seamless integration with fragmented healthcare IT (EHRs, PACS, LIS) is non-negotiable. Requires robust APIs, adherence to standards (FHIR, DICOM), and minimizing workflow disruption. Products simplifying integration gain a significant edge.</p>
-                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="loading-spinner"></div></button>
+                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="uber-spinner"></div></button>
                             <div class="llm-response-area hidden"></div>
                         </div>
                     </div>
@@ -750,7 +761,7 @@
                         </div>
                         <div class="uber-accordion-content" data-content="Sustainable Monetization Models: Align with value-based care. Models should reflect tangible improvements in outcomes, efficiency, and cost reduction. Options: SaaS subscriptions, outcome-based pricing, hybrid models. Proving ROI by contributing to the 'triple aim' (better experience, population health, lower cost) is key.">
                             <p>Align with value-based care. Models should reflect tangible improvements in outcomes, efficiency, and cost reduction. Options: SaaS subscriptions, outcome-based pricing, hybrid models. Proving ROI by contributing to the "triple aim" (better experience, population health, lower cost) is key.</p>
-                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="loading-spinner"></div></button>
+                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="uber-spinner"></div></button>
                             <div class="llm-response-area hidden"></div>
                         </div>
                     </div>
@@ -808,47 +819,82 @@
             });
         }
 
-        // Update navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.className = 'uber-nav-link';
-        });
+        // Navigation: highlight active section on scroll
+        const navLinks = document.querySelectorAll('.uber-nav-link[href^="#"]');
+        const sectionIds = Array.from(navLinks).map(link => link.getAttribute('href'));
+        const sections = sectionIds.map(id => document.querySelector(id));
+        function updateActiveNav() {
+            let index = sections.findIndex((section, i) => {
+                if (!section) return false;
+                const rect = section.getBoundingClientRect();
+                return rect.top <= 80 && rect.bottom > 80;
+            });
+            navLinks.forEach((link, i) => {
+                if (i === index) link.classList.add('active');
+                else link.classList.remove('active');
+            });
+        }
+        window.addEventListener('scroll', updateActiveNav, { passive: true });
+        updateActiveNav();
 
-        // Update tab functionality
+        // Tab functionality (keyboard accessible)
         const tabButtons = document.querySelectorAll('.uber-tab');
         const useCaseContents = document.querySelectorAll('.use-case-content');
-
         tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-
-                const tabId = this.getAttribute('data-tab');
-                useCaseContents.forEach(content => {
-                    if (content.id === tabId) {
-                        content.classList.remove('hidden');
-                    } else {
-                        content.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // Update accordion functionality
-        const accordionHeaders = document.querySelectorAll('.uber-accordion-header');
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', function() {
-                const content = this.nextElementSibling;
-                const isOpen = content.style.display === 'block';
-                
-                if (isOpen) {
-                    content.style.display = 'none';
-                    this.querySelector('.plus-minus').textContent = '+';
-                } else {
-                    content.style.display = 'block';
-                    this.querySelector('.plus-minus').textContent = '−';
+            button.setAttribute('tabindex', '0');
+            button.addEventListener('click', activateTab);
+            button.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    activateTab.call(this, e);
                 }
             });
         });
+        function activateTab(e) {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            const tabId = this.getAttribute('data-tab');
+            useCaseContents.forEach(content => {
+                content.classList.toggle('hidden', content.id !== tabId);
+            });
+        }
+
+        // Accordion functionality (keyboard accessible, only one open at a time)
+        const accordionHeaders = document.querySelectorAll('.uber-accordion-header');
+        accordionHeaders.forEach(header => {
+            header.setAttribute('tabindex', '0');
+            header.setAttribute('role', 'button');
+            header.setAttribute('aria-expanded', 'false');
+            header.addEventListener('click', toggleAccordion);
+            header.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleAccordion.call(this, e);
+                }
+            });
+        });
+        function toggleAccordion() {
+            const content = this.nextElementSibling;
+            const isOpen = !content.classList.contains('hidden');
+            // Close all accordions in this section
+            const parentSection = this.closest('.uber-section, .use-case-content');
+            parentSection.querySelectorAll('.uber-accordion-content').forEach(c => {
+                c.classList.add('hidden');
+                c.previousElementSibling.setAttribute('aria-expanded', 'false');
+                c.previousElementSibling.querySelector('.plus-minus').textContent = '+';
+            });
+            if (!isOpen) {
+                content.classList.remove('hidden');
+                this.setAttribute('aria-expanded', 'true');
+                this.querySelector('.plus-minus').textContent = '−';
+            } else {
+                content.classList.add('hidden');
+                this.setAttribute('aria-expanded', 'false');
+                this.querySelector('.plus-minus').textContent = '+';
+            }
+        }
+        // Hide all accordion contents by default
+        document.querySelectorAll('.uber-accordion-content').forEach(c => c.classList.add('hidden'));
 
         // Chart configurations with dark theme
         const darkChartOptions = {
@@ -973,15 +1019,14 @@
         }
 
         // Gemini API Integration
-        const apiKey = "AIzaSyAaWjwg74-W_9k3IbkK-KQjkTri3wx2C4E"; // If you want to use models other than gemini-2.0-flash or imagen-3.0-generate-002, provide an API key here. Otherwise, leave this as-is.
+        const apiKey = ""; // Provide your Gemini API key here for production use.
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
         // Ask MedGemma AI Assistant
         const askAiButton = document.getElementById('ask-ai-button');
         const aiQuestionInput = document.getElementById('ai-question-input');
         const aiResponseArea = document.getElementById('ai-response-area');
-        const askAiSpinner = askAiButton.querySelector('.loading-spinner');
-
+        const askAiSpinner = askAiButton.querySelector('.uber-spinner');
         if (askAiButton && aiQuestionInput && aiResponseArea) {
             askAiButton.addEventListener('click', async function() {
                 const userQuestion = aiQuestionInput.value.trim();
@@ -990,28 +1035,20 @@
                     aiResponseArea.classList.remove('hidden');
                     return;
                 }
-
-                aiResponseArea.textContent = ''; // Clear previous response
+                aiResponseArea.textContent = '';
                 aiResponseArea.classList.add('hidden');
                 askAiButton.disabled = true;
-                askAiSpinner.style.display = 'block'; // Show spinner
-
+                askAiSpinner.classList.remove('hidden');
                 try {
                     let chatHistory = [];
-                    // Provide context from the report. For a full-fledged app, this would be more sophisticated.
-                    // For this demo, we'll provide a general context.
                     const reportContext = `The following is information from a report about MedGemma 4B IT, a multimodal AI model for healthcare. It addresses topics like MedGemma's capabilities (text and image processing, 128K token input), its performance benchmarks (e.g., MIMIC CXR F1: 88.9%, DermMCQA accuracy: 71.8%), key considerations for productization (it's a foundational model, not clinical grade, needs fine-tuning), deployment (Hugging Face, Vertex AI), healthcare unmet needs (professional shortages, data fragmentation, rising costs, demand for personalized care), and high-potential product use cases (tele-dermatology, wound care monitoring, clinical decision support, medical education simulations). Strategic imperatives include regulatory compliance (HIPAA, GDPR, FDA), ethical AI (bias, transparency, human-in-the-loop), robust data strategy, interoperability, and sustainable monetization.`;
-                    
                     chatHistory.push({ role: "user", parts: [{ text: `${reportContext}\n\nUser Question: ${userQuestion}\n\nBased on the provided information, please answer the user's question concisely.` }] });
-
                     const payload = { contents: chatHistory };
-
                     const response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
-
                     const result = await response.json();
                     if (result.candidates && result.candidates.length > 0 &&
                         result.candidates[0].content && result.candidates[0].content.parts &&
@@ -1027,7 +1064,14 @@
                 } finally {
                     aiResponseArea.classList.remove('hidden');
                     askAiButton.disabled = false;
-                    askAiSpinner.style.display = 'none'; // Hide spinner
+                    askAiSpinner.classList.add('hidden');
+                }
+            });
+            // Prevent double submission on Enter in textarea
+            aiQuestionInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    askAiButton.click();
                 }
             });
         }
@@ -1036,35 +1080,28 @@
         const summarizeButtons = document.querySelectorAll('.summarize-button');
         summarizeButtons.forEach(button => {
             const spinner = button.querySelector('.loading-spinner');
-            const responseArea = button.nextElementSibling; // The div for the LLM response
-
+            const responseArea = button.nextElementSibling;
             button.addEventListener('click', async function() {
-                const accordionContent = this.closest('.accordion-content');
+                const accordionContent = this.closest('.uber-accordion-content');
                 const contentToSummarize = accordionContent.getAttribute('data-content');
-
                 if (!contentToSummarize) {
                     responseArea.textContent = 'No content to summarize.';
                     responseArea.classList.remove('hidden');
                     return;
                 }
-
-                responseArea.textContent = ''; // Clear previous response
+                responseArea.textContent = '';
                 responseArea.classList.add('hidden');
                 button.disabled = true;
-                spinner.style.display = 'block'; // Show spinner
-
+                spinner.style.display = 'block';
                 try {
                     let chatHistory = [];
                     chatHistory.push({ role: "user", parts: [{ text: `Summarize the following healthcare strategic imperative concisely, in 1-2 sentences: "${contentToSummarize}"` }] });
-
                     const payload = { contents: chatHistory };
-
                     const response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
-
                     const result = await response.json();
                     if (result.candidates && result.candidates.length > 0 &&
                         result.candidates[0].content && result.candidates[0].content.parts &&
@@ -1080,11 +1117,10 @@
                 } finally {
                     responseArea.classList.remove('hidden');
                     button.disabled = false;
-                    spinner.style.display = 'none'; // Hide spinner
+                    spinner.style.display = 'none';
                 }
             });
         });
-
     });
 </script>
 </body>
