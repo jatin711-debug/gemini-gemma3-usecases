@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedGemma Product Opportunities | Healthcare AI Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --uber-black: #000000;
+            --uber-white: #ffffff;
+            --uber-green: #00d48a;
+            --uber-dark-green: #00b86b;
+            --uber-light-gray: #f6f6f6;
+            --uber-medium-gray: #e5e7eb;
+            --uber-dark-gray: #1f2937;
+            --uber-text-primary: #000000;
+            --uber-text-secondary: #6b7280;
+        }
+
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: var(--uber-white);
+            line-height: 1.6;
+        }
+
+        .uber-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .uber-header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .uber-nav-link {
+            color: var(--uber-white);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .uber-nav-link:hover {
+            background: var(--uber-green);
+            color: var(--uber-black);
+            transform: translateY(-1px);
+        }
+
+        .uber-nav-link.active {
+            background: var(--uber-green);
+            color: var(--uber-black);
+        }
+
+        .uber-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 48px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .uber-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--uber-white);
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #00d48a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .uber-section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--uber-white);
+            margin-bottom: 24px;
+        }
+
+        .uber-subsection-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--uber-green);
+            margin: 32px 0 16px 0;
+        }
+
+        .uber-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .uber-button {
+            background: var(--uber-green);
+            color: var(--uber-black);
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .uber-button:hover {
+            background: var(--uber-dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 138, 0.3);
+        }
+
+        .uber-button:active {
+            transform: translateY(0);
+        }
+
+        .uber-tab {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--uber-white);
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .uber-tab:hover {
+            border-color: var(--uber-green);
+            color: var(--uber-green);
+        }
+
+        .uber-tab.active {
+            background: var(--uber-green);
+            border-color: var(--uber-green);
+            color: var(--uber-black);
+        }
+
+        .uber-accordion {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .uber-accordion-header {
+            background: transparent;
+            border: none;
+            color: var(--uber-white);
+            padding: 24px;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .uber-accordion-header:hover {
+            background: rgba(0, 212, 138, 0.1);
+        }
+
+        .uber-accordion-content {
+            padding: 0 24px 24px;
+            display: none;
+        }
+
+        .uber-table {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .uber-table th {
+            background: rgba(0, 212, 138, 0.1);
+            color: var(--uber-green);
+            padding: 20px;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .uber-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .uber-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px 20px;
+            color: var(--uber-white);
+            width: 100%;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .uber-input:focus {
+            outline: none;
+            border-color: var(--uber-green);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .uber-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .uber-response-area {
+            background: rgba(0, 212, 138, 0.05);
+            border: 1px solid rgba(0, 212, 138, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 16px;
+            color: var(--uber-white);
+        }
+
+        .uber-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid var(--uber-green);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            height: 400px;
+        }
+
+        .uber-footer {
+            background: var(--uber-black);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            padding: 48px 24px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .uber-mobile-menu {
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
+        }
+
+        .uber-hero-badge {
+            background: rgba(0, 212, 138, 0.1);
+            border: 1px solid rgba(0, 212, 138, 0.2);
+            color: var(--uber-green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .uber-section {
+                padding: 24px;
+            }
+            .uber-title {
+                font-size: 2rem;
+            }
+            .uber-section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="uber-header">
+        <div class="uber-container">
+            <div class="flex items-center justify-between h-20">
+                <div class="uber-title text-2xl font-bold">MedGemma</div>
+                <nav class="hidden md:flex space-x-2">
+                    <a href="#overview" class="uber-nav-link">Overview</a>
+                    <a href="#medgemma-ai" class="uber-nav-link">MedGemma AI</a>
+                    <a href="#healthcare-needs" class="uber-nav-link">Healthcare Needs</a>
+                    <a href="#product-opportunities" class="uber-nav-link">Product Opportunities</a>
+                    <a href="#strategic-imperatives" class="uber-nav-link">Strategic Imperatives</a>
+                    <a href="#ask-medgemma-ai" class="uber-nav-link">Ask MedGemma AI</a>
+                    <a href="#conclusion" class="uber-nav-link">Conclusion</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden uber-mobile-menu pb-4">
+            <a href="#overview" class="block uber-nav-link text-center">Overview</a>
+            <a href="#medgemma-ai" class="block uber-nav-link text-center">MedGemma AI</a>
+            <a href="#healthcare-needs" class="block uber-nav-link text-center">Healthcare Needs</a>
+            <a href="#product-opportunities" class="block uber-nav-link text-center">Product Opportunities</a>
+            <a href="#strategic-imperatives" class="block uber-nav-link text-center">Strategic Imperatives</a>
+            <a href="#ask-medgemma-ai" class="block uber-nav-link text-center">Ask MedGemma AI</a>
+            <a href="#conclusion" class="block uber-nav-link text-center">Conclusion</a>
+        </div>
+    </header>
+
+    <main class="uber-container py-12">
+        <section id="overview" class="pt-20 -mt-20 mb-16">
+            <div class="uber-section">
+                <div class="uber-hero-badge">🚀 Healthcare AI Innovation</div>
+                <h1 class="uber-title">Strategic Product Opportunities</h1>
+                <h2 class="uber-section-title">Leveraging MedGemma 4B IT for High-Impact Healthcare AI Solutions</h2>
+                <p class="uber-text text-xl">Welcome to the interactive exploration of healthcare's next frontier. This comprehensive platform translates cutting-edge AI research into actionable business intelligence, helping you understand MedGemma's revolutionary capabilities and the transformative opportunities ahead.</p>
+                <p class="uber-text">The healthcare industry faces significant challenges: escalating costs, professional shortages, and fragmented data. Google's MedGemma 4B IT, a sophisticated multimodal AI, is uniquely positioned to address these unmet needs. Its ability to process medical text and diverse imaging modalities (chest X-rays, dermatology, ophthalmology, histopathology) offers a robust platform for innovation.</p>
+                <p class="uber-text">This interactive report highlights high-potential product opportunities including advanced remote diagnostics, intelligent clinical decision support, personalized patient engagement, and AI-enhanced medical education. Success requires rigorous validation, regulatory adherence, ethical AI principles, system interoperability, and value-driven monetization.</p>
+            </div>
+        </section>
+
+        <section id="medgemma-ai" class="pt-20 -mt-20 mb-16">
+            <div class="uber-section">
+                <h2 class="uber-section-title">Understanding MedGemma 4B IT</h2>
+                <p class="uber-text text-xl">This section delves into the core capabilities of MedGemma 4B IT, its performance benchmarks, and key considerations for productization. Understanding the model's architecture, specialized training, and deployment ecosystem is crucial for developers looking to build impactful healthcare solutions. MedGemma 4B IT offers a powerful foundation, but its journey to clinical-grade application involves careful fine-tuning and strategic development.</p>
+
+                <h3 class="uber-subsection-title">Core Capabilities and Development Nuances</h3>
+                <p class="uber-text">MedGemma 4B IT, an instruction-tuned variant of MedGemma 4B, is built on the Gemma 3 architecture. It processes text and images (normalized to 896x896, encoded to 256 tokens each), supporting a 128K token input and 8192 token output. Its specialized pre-training on de-identified medical data (chest X-rays, dermatology, ophthalmology, histopathology images, and medical text) makes it highly optimized for these domains, not a generic vision-language model. This focus, along with the use of de-identified data, aids regulatory compliance (HIPAA, GDPR).</p>
+
+                <h3 class="uber-subsection-title">Performance Benchmarks (Table 1)</h3>
+                <p class="uber-text">MedGemma 4B IT shows superior performance over the base Gemma 3 4B model in multimodal health tasks. However, it's "not clinical grade" and needs "additional fine-tuning" for production. The opportunity lies in developing specialized layers on this foundation.</p>
+                <div class="uber-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Task and Metric</th>
+                                <th>MedGemma 4B Score</th>
+                                <th>Gemma 3 4B Score</th>
+                                <th>Other Models (where applicable)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="4" class="font-semibold bg-stone-200">Imaging Evaluations</td></tr>
+                            <tr><td>MIMIC CXR - Average F1 for top 5 conditions</td><td>88.9</td><td>81.1</td><td></td></tr>
+                            <tr><td>CheXpert CXR - Average F1 for top 5 conditions</td><td>48.1</td><td>31.2</td><td></td></tr>
+                            <tr><td>DermMCQA - Accuracy</td><td>71.8</td><td>42.6</td><td></td></tr>
+                            <tr><td>SlakeVQA (radiology) - Tokenized F1</td><td>62.3</td><td>38.6</td><td></td></tr>
+                            <tr><td>VQA-Rad (radiology) - Tokenized F1</td><td>49.9</td><td>38.6</td><td></td></tr>
+                            <tr><td>PathMCQA (histopathology) - Accuracy</td><td>69.8</td><td>37.1</td><td></td></tr>
+                            <tr><td>MedXpertQA (text + multimodal questions) - Accuracy</td><td>18.8</td><td>16.4</td><td></td></tr>
+                            <tr><td colspan="4" class="font-semibold bg-stone-200">Chest X-ray Report Generation</td></tr>
+                            <tr><td>MIMIC CXR - RadGraph F1</td><td>29.5 (pre-trained)</td><td>0.12 (instruction-tuned)</td><td>PaliGemma 2 3B (tuned for CXR): 28.8, PaliGemma 2 10B (tuned for CXR): 29.5</td></tr>
+                            <tr><td colspan="4" class="text-xs italic">Note: Instruction-tuned versions of MedGemma 4B and Gemma 3 4B achieve lower scores for CXR report generation (0.22 and 0.12, respectively) due to differences in reporting style compared to MIMIC ground truth reports. Further fine-tuning on MIMIC reports is suggested for improved performance.</td></tr>
+                            <tr><td colspan="4" class="font-semibold bg-stone-200">Text Evaluations</td></tr>
+                            <tr><td>MedQA (4-op)</td><td>64.4</td><td>50.7</td><td></td></tr>
+                            <tr><td>MedMCQA</td><td>55.7</td><td>45.4</td><td></td></tr>
+                            <tr><td>PubMedQA</td><td>73.4</td><td>68.4</td><td></td></tr>
+                            <tr><td>MMLU Med (text only)</td><td>70.0</td><td>67.2</td><td></td></tr>
+                            <tr><td>MedXpertQA (text only)</td><td>14.2</td><td>11.6</td><td></td></tr>
+                            <tr><td>AfriMed-QA</td><td>52.0</td><td>48.0</td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="uber-text">The 128K token input length allows ingestion of multiple images and extensive patient history, addressing data fragmentation by enabling holistic case review.</p>
+
+                <h3 class="uber-subsection-title">Key Considerations for Productization</h3>
+                <p class="uber-text">MedGemma is a "foundational model," not "clinical grade." The product opportunity lies in the solution stack built on top: data curation, integration layers, validation frameworks, UI/UX, ethical/regulatory compliance, and human-in-the-loop design. This transforms the focus from "building an AI model" to "building a clinically validated, integrated, and ethically sound AI solution."</p>
+
+                <h3 class="uber-subsection-title">Deployment Ecosystem</h3>
+                <p class="uber-text">Accessible via Hugging Face for experimentation and Google Cloud's Vertex AI for scalable, production-grade deployment. This dual accessibility fosters innovation and accelerates development, crucial for healthcare AI where security and scalability are paramount.</p>
+            </div>
+        </section>
+
+        <section id="healthcare-needs" class="pt-20 -mt-20 mb-16">
+            <div class="uber-section">
+                <h2 class="uber-section-title">The Healthcare Landscape: Critical Unmet Needs</h2>
+                <p class="uber-text text-xl">This section explores the complex challenges facing the global healthcare system, such as professional shortages, rising costs, and data fragmentation. It also examines evolving patient demands for personalized and remote care, and the current limitations of AI in healthcare. Understanding these multifaceted issues is key to identifying where MedGemma 4B IT can provide the most impactful solutions, turning systemic problems into opportunities for innovation.</p>
+                
+                <p class="uber-text">The global healthcare system faces inadequate funding, shortages of professionals (especially specialists like pathologists), insufficient infrastructure, and escalating costs. These issues limit care quality and access, particularly in underserved areas. An aging population and rising chronic diseases intensify these pressures.</p>
+                <p class="uber-text">AI solutions addressing one challenge can have positive ripple effects. For example, an AI assistant reducing workload can improve care quality, reduce burnout, and enhance access.</p>
+
+                <h3 class="uber-subsection-title">Operational Inefficiencies</h3>
+                <p class="uber-text">Data fragmentation is a major impediment. EHRs, PACS, and LIS often operate in silos, causing workflow bottlenecks and lost insights from unstructured data. MedGemma's multimodal capability and long context length (128K tokens) can "connect the dots," ingesting full clinical narratives and imaging for comprehensive analysis.</p>
+
+                <h3 class="uber-subsection-title">Evolving Patient & Provider Demands</h3>
+                <p class="uber-text">There's growing demand for personalized care and telemedicine. Wearables are becoming vital health tools. The Remote Patient Monitoring (RPM) market is booming (USD 24.3B in 2023 to USD 116.29B by 2032). MedGemma's visual and text analysis can power personalized, proactive health management platforms.</p>
+
+                <h3 class="uber-subsection-title">Current AI Limitations</h3>
+                <ul class="list-disc pl-5 mb-4">
+                    <li><strong>Transparency/Interpretability:</strong> "Black box" nature hinders trust.</li>
+                    <li><strong>Hallucinations:</strong> Risk of plausible but inaccurate AI-generated content.</li>
+                    <li><strong>Data Privacy/Security:</strong> Concerns with sensitive patient data (HIPAA, GDPR).</li>
+                    <li><strong>Bias and Fairness:</strong> Training data can reflect societal prejudices.</li>
+                    <li><strong>Human Participation/Ethics:</strong> AI supplements, not replaces, human doctors.</li>
+                    <li><strong>Legal/Regulatory Frameworks:</strong> Technology outpaces existing laws.</li>
+                </ul>
+                <p class="uber-text">Addressing these limitations (e.g., via XAI, human oversight, diverse data, PETs, clear regulatory strategy) is crucial for market success and building trust.</p>
+
+                <h3 class="uber-subsection-title">Key Unmet Needs & AI's Potential Role (Table 2)</h3>
+                <div class="uber-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Unmet Need Category</th>
+                                <th>Description of Need</th>
+                                <th>AI's General Potential Role</th>
+                                <th>How MedGemma 4B IT Specifically Contributes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Access to Healthcare</td>
+                                <td>Shortage of professionals, geographical barriers, high costs limit care access.</td>
+                                <td>Telemedicine, remote monitoring, AI-assisted diagnostics can extend reach.</td>
+                                <td>Multimodal capabilities enable remote preliminary diagnosis/triage (dermatology, radiology, histopathology), supporting teleconsultations.</td>
+                            </tr>
+                            <tr>
+                                <td>Shortage of Healthcare Professionals</td>
+                                <td>Growing demand and burnout strain workforce.</td>
+                                <td>Automating tasks, decision support, enhancing training can alleviate workload.</td>
+                                <td>Acts as "physician's assistant" for initial diagnostic support, automates reports, powers training simulations.</td>
+                            </tr>
+                            <tr>
+                                <td>Data Fragmentation</td>
+                                <td>Siloed data (EHRs, PACS, LIS) leads to lost insights, bottlenecks.</td>
+                                <td>Multimodal AI integrates diverse data for a holistic patient view.</td>
+                                <td>Processes text and images with long context (128K tokens) to correlate notes, labs, images for comprehensive decision support.</td>
+                            </tr>
+                            <tr>
+                                <td>Rising Costs of Healthcare</td>
+                                <td>Skyrocketing bills and inefficiencies burden patients/providers.</td>
+                                <td>Preventive care, resource optimization, streamlining operations can reduce costs.</td>
+                                <td>Enables early detection, improves diagnostic efficiency, supports personalized chronic disease management, reducing expensive interventions.</td>
+                            </tr>
+                            <tr>
+                                <td>Need for Personalized & Proactive Care</td>
+                                <td>Demand for tailored treatments and continuous health management.</td>
+                                <td>AI analyzes individual data for customized guidance, monitoring, risk prediction.</td>
+                                <td>Multimodal analysis of history, lifestyle, visual changes powers personalized plans, remote monitoring, early alerts.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="product-opportunities" class="pt-20 -mt-20 mb-16">
+            <div class="uber-section">
+                <h2 class="uber-section-title">High-Potential Product Use Cases</h2>
+                <p class="uber-text text-xl">Discover specific product opportunities where MedGemma 4B IT's unique multimodal capabilities can address critical unmet needs in healthcare.</p>
+
+                <div class="mb-8">
+                    <div id="use-case-tabs" class="flex flex-wrap gap-4 mb-8">
+                        <button class="uber-tab active" data-tab="remote-diagnostics">Remote Diagnostics</button>
+                        <button class="uber-tab" data-tab="clinical-support">Clinical Support</button>
+                        <button class="uber-tab" data-tab="patient-engagement">Patient Engagement</button>
+                        <button class="uber-tab" data-tab="medical-education">Medical Education</button>
+                    </div>
+
+                    <div id="remote-diagnostics" class="use-case-content">
+                        <h3 class="uber-subsection-title">A. Advanced Remote Diagnostics & Triage Platforms</h3>
+                        <p class="uber-text">Opportunity: Bridge geographical gaps, alleviate specialist shortages, offer convenient, cost-effective care, especially in underserved areas. Not to replace specialists, but empower GPs/nurses/patients for initial screening and monitoring.</p>
+                        
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>AI-Assisted Tele-Dermatology</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Patients upload skin images for AI assessment (potential conditions, risk flagging, preliminary guidance). MedGemma's DermMCQA accuracy: 71.8%.</p>
+                                <p class="font-semibold mt-2">Market: Teledermatology</p>
+                                <div class="chart-container my-2"><canvas id="teledermatologyChart"></canvas></div>
+                                <p class="text-sm">Projected Growth: USD 14.99B (2024) to USD 41.08B (2030), 17.9% CAGR. "Store and forward" segment: 38.9% revenue share (2024).</p>
+                            </div>
+                        </div>
+
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>Remote Wound Care Monitoring</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Patients/caregivers upload wound images for AI assessment (healing progress, infection signs, size). Addresses rising chronic wounds (diabetes).</p>
+                                <p class="font-semibold mt-2">Market: AI in Wound Care</p>
+                                <div class="chart-container my-2"><canvas id="woundCareChart"></canvas></div>
+                                <p class="text-sm">Projected Growth: USD 0.64B (2024) to USD 12.9B (2034), 35.03% CAGR. Seen as essential for accurate evaluations and individualized plans.</p>
+                            </div>
+                        </div>
+
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>Preliminary Radiology/Histopathology Assistant for GPs</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Assistive tool for non-specialists providing preliminary interpretations (common scans, slides), helping GPs prioritize, identify urgent findings, inform referrals. MedGemma's MIMIC CXR F1: 88.9%; PathMCQA accuracy: 69.8%.</p>
+                                <p class="font-semibold mt-2">Market: AI in Radiology & Pathology</p>
+                                <div class="chart-container my-2"><canvas id="radiologyPathologyChart"></canvas></div>
+                                <p class="text-sm">AI in Radiology: USD 2.2B (2024) to USD 15.7B (2035), 19.56% CAGR. AI in Pathology: USD 87.2M (2024) to USD 347.4M (2030), 26.5% CAGR.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="clinical-support" class="use-case-content hidden">
+                        <h3 class="uber-subsection-title">B. Intelligent Clinical Decision Support & Workflow Automation</h3>
+                        <p class="uber-text">Opportunity: Enhance diagnostic accuracy, streamline workflows, reduce administrative/cognitive burden, combat burnout. Focus on synthesizing complex information from diverse sources for a holistic patient view.</p>
+                        
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>Multimodal AI for Comprehensive Patient Data Integration</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Ingest and correlate clinical notes, lab results, patient history (text), and medical images (scans, slides) for a unified patient view. MedGemma's 128K token context supports deep analysis. Addresses "data fragmentation."</p>
+                                <p class="font-semibold mt-2">Market: AI in Medical Imaging</p>
+                                <p class="text-sm">Projected: USD 4.54B by 2029.</p>
+                            </div>
+                        </div>
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>Automated Medical Image Report Generation/Augmentation</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Automatically draft initial radiology/pathology reports based on image analysis for clinician review/refinement. MedGemma's RadGraph F1 29.5 (pre-trained). Streamlines tasks, potentially reduces errors by 50%. Fine-tuning for specific reporting styles required.</p>
+                            </div>
+                        </div>
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>AI-Powered Alerts for Early Patient Deterioration</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Analyze integrated multimodal data (text records, imaging, real-time sensor data) to identify high-risk patients or predict early deterioration. Supports staffing predictions, risk scoring for proactive care.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="patient-engagement" class="use-case-content hidden">
+                        <h3 class="uber-subsection-title">C. Personalized Patient Engagement & Chronic Disease Management</h3>
+                        <p class="uber-text">Opportunity: Empower patients with tailored health insights, improve treatment adherence, proactively manage chronic conditions, reduce hospitalizations. Shift from reactive to continuous, proactive, patient-centric health management.</p>
+                        
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>AI-Driven Platforms for Personalized Health Guidance</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Provide individualized guidance (diet, exercise, smoking cessation) and tailored health management plans based on medical history and lifestyle. Dynamically adjust plans based on real-time data.</p>
+                            </div>
+                        </div>
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>Remote Monitoring of Chronic Conditions with Visual Data Analysis</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Leverage MedGemma's visual capabilities for wound healing monitoring, dermatological change tracking, ophthalmological monitoring (e.g., diabetic retinopathy). Integrates with text capabilities for personalized advice.</p>
+                                <p class="font-semibold mt-2">Market: Remote Patient Monitoring (RPM)</p>
+                                <div class="chart-container my-2"><canvas id="rpmChart"></canvas></div>
+                                <p class="text-sm">Projected Growth: USD 24.3B (2023) to USD 116.29B (2032), 19.0% CAGR. Diabetes is the largest segment. Patient segment dominates teledermatology and is fastest-growing in RPM.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="medical-education" class="use-case-content hidden">
+                        <h3 class="uber-subsection-title">D. AI-Enhanced Medical Education & Training Simulations</h3>
+                        <p class="uber-text">Opportunity: Address skilled professional shortages by revolutionizing medical training, accelerating skill acquisition, enhancing education quality. Create interactive, personalized, scalable learning environments.</p>
+                        
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>Multimodal Virtual Patient Simulations</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Power realistic AI virtual patients with diverse symptoms. Students practice diagnostics/treatment; AI evaluates interactions against standards (e.g., OSCE). Scalable alternative to human standardized patients.</p>
+                            </div>
+                        </div>
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>AI-Generated, Image-Rich Study Materials & Quizzes</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Automatically generate USMLE-style questions, answers, explanations from course content. Generate sample medical images (X-rays, MRIs) with highlighted abnormalities. Exposes students to wider clinical scenarios.</p>
+                            </div>
+                        </div>
+                        <div class="uber-accordion mb-4">
+                            <div class="uber-accordion-header">
+                                <span>Tools for Advanced Medical Image Interpretation Training</span>
+                                <span class="plus-minus">+</span>
+                            </div>
+                            <div class="uber-accordion-content">
+                                <p>Create specialized training modules using MedGemma's image classification and VQA strengths. Help students/residents learn faster by explaining complex visual findings and providing immediate feedback.</p>
+                                <p class="font-semibold mt-2">Market: AI in Medical Education</p>
+                                <p class="text-sm">Emerging market with significant pilot efforts. Addresses critical need for a larger, better-trained workforce.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="uber-subsection-title">Summary of Use Cases (Table 3 Excerpt)</h3>
+                <p class="uber-text">The following table summarizes the proposed product use cases, the unmet needs they address, how MedGemma 4B IT is leveraged, and key market data. For detailed market projections, please explore the interactive charts within each use case category above.</p>
+                <div class="uber-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Use Case Category</th>
+                                <th>Specific Product Idea</th>
+                                <th>Key Unmet Needs Addressed</th>
+                                <th>How MedGemma 4B IT is Leveraged</th>
+                                <th>Market Size (Current & Projected) & CAGR (Illustrative)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="3">Advanced Remote Diagnostics & Triage</td>
+                                <td>AI-Assisted Tele-Dermatology Platform</td>
+                                <td>Access to Specialists, Cost, Shortages</td>
+                                <td>Image classification (DermMCQA 71.8%), VQA, text analysis</td>
+                                <td>Teledermatology: USD 14.99B (2024) -> USD 41.08B (2030), 17.9% CAGR</td>
+                            </tr>
+                            <tr>
+                                <td>Remote Wound Care Monitoring System</td>
+                                <td>Chronic Disease Mgt, Access, Shortages</td>
+                                <td>Image analysis (healing, infection), text guidance</td>
+                                <td>AI in Wound Care: USD 0.64B (2024) -> USD 12.9B (2034), 35.03% CAGR</td>
+                            </tr>
+                            <tr>
+                                <td>Preliminary Radiology/Histopathology Assistant for GPs</td>
+                                <td>Specialist Shortages, Diagnostic Efficiency</td>
+                                <td>CXR classification (88.9% F1), PathMCQA (69.8%), VQA</td>
+                                <td>AI in Radiology: USD 2.2B (2024) -> USD 15.7B (2035), 19.56% CAGR</td>
+                            </tr>
+                             <tr>
+                                <td rowspan="2">Intelligent Clinical Decision Support & Workflow Automation</td>
+                                <td>Multimodal Clinical Decision Support System</td>
+                                <td>Data Fragmentation, Accuracy, Burnout</td>
+                                <td>Correlates text (EHR) & images (scans) with 128K context</td>
+                                <td>AI in Medical Imaging: USD 4.54B (2029)</td>
+                            </tr>
+                            <tr>
+                                <td>Automated Medical Image Report Generation</td>
+                                <td>Workflow Bottlenecks, Efficiency</td>
+                                <td>CXR report generation (RadGraph F1 29.5), text summarization</td>
+                                <td>Part of Radiology/Pathology markets</td>
+                            </tr>
+                            <tr>
+                                <td>Personalized Patient Engagement & Chronic Disease Management</td>
+                                <td>AI-Driven Personalized Health Management Platform</td>
+                                <td>Personalized Care, Chronic Disease Burden</td>
+                                <td>Text comprehension, visual analysis (wounds, derm, ophtho)</td>
+                                <td>RPM: USD 24.3B (2023) -> USD 116.29B (2032), 19.0% CAGR</td>
+                            </tr>
+                            <tr>
+                                <td>AI-Enhanced Medical Education & Training</td>
+                                <td>Multimodal Virtual Patient Simulator</td>
+                                <td>Professional Shortages, Training Quality</td>
+                                <td>Text (dialogue), images (simulated scans), VQA</td>
+                                <td>AI in Medical Education: Emerging market</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategic-imperatives" class="pt-20 -mt-20 mb-16">
+            <div class="uber-section">
+                <h2 class="uber-section-title">Strategic Imperatives for Success</h2>
+                <p class="uber-text text-xl">Successfully bringing MedGemma 4B IT-powered solutions to the healthcare market requires more than technological innovation. This section outlines crucial strategic considerations: navigating regulatory compliance, establishing ethical AI frameworks, developing robust data strategies, ensuring interoperability with existing systems, and creating sustainable monetization models. Addressing these imperatives proactively is key to building trust, gaining adoption, and achieving long-term impact.</p>
+
+                <div class="space-y-4">
+                    <div class="uber-accordion">
+                        <div class="uber-accordion-header">
+                            <span>Regulatory Compliance</span>
+                            <span class="plus-minus">+</span>
+                        </div>
+                        <div class="uber-accordion-content" data-content="Regulatory Compliance: Strict adherence to HIPAA (US), GDPR (EU), and FDA SaMD regulations is vital. MedGemma's 'not clinical grade' status means developers bear responsibility for validation and approval. A 'regulatory-by-design' approach, anticipating changes and designing for auditability, is crucial for market entry.">
+                            <p>Strict adherence to HIPAA (US), GDPR (EU), and FDA SaMD regulations is vital. MedGemma's "not clinical grade" status means developers bear responsibility for validation and approval. A "regulatory-by-design" approach, anticipating changes and designing for auditability, is crucial for market entry.</p>
+                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="loading-spinner"></div></button>
+                            <div class="llm-response-area hidden"></div>
+                        </div>
+                    </div>
+                    <div class="uber-accordion">
+                        <div class="uber-accordion-header">
+                            <span>Ethical AI Frameworks</span>
+                            <span class="plus-minus">+</span>
+                        </div>
+                        <div class="uber-accordion-content" data-content="Ethical AI Frameworks: Building trust requires mitigating bias (diverse data, fairness-aware design), ensuring transparency/explainability (XAI), managing hallucinations (safeguards, human oversight), emphasizing human participation, and defining liability. Prioritizing ethical design builds competitive advantage.">
+                            <p>Building trust requires mitigating bias (diverse data, fairness-aware design), ensuring transparency/explainability (XAI), managing hallucinations (safeguards, human oversight), emphasizing human participation, and defining liability. Prioritizing ethical design builds competitive advantage.</p>
+                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="loading-spinner"></div></button>
+                            <div class="llm-response-area hidden"></div>
+                        </div>
+                    </div>
+                    <div class="uber-accordion">
+                        <div class="uber-accordion-header">
+                            <span>Robust Data Strategy</span>
+                            <span class="plus-minus">+</span>
+                        </div>
+                        <div class="uber-accordion-content" data-content="Robust Data Strategy: Fine-tuning MedGemma requires high-quality, diverse, task-specific medical datasets. This involves strategic partnerships, rigorous data governance (privacy, security, quality control), and systems for continuous learning from real-world data. Synthetic data generation can augment scarce datasets. This forms a competitive moat.">
+                            <p>Fine-tuning MedGemma requires high-quality, diverse, task-specific medical datasets. This involves strategic partnerships, rigorous data governance (privacy, security, quality control), and systems for continuous learning from real-world data. Synthetic data generation can augment scarce datasets. This forms a competitive moat.</p>
+                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="loading-spinner"></div></button>
+                            <div class="llm-response-area hidden"></div>
+                        </div>
+                    </div>
+                    <div class="uber-accordion">
+                        <div class="uber-accordion-header">
+                            <span>Interoperability & Integration</span>
+                            <span class="plus-minus">+</span>
+                        </div>
+                        <div class="uber-accordion-content" data-content="Interoperability & Integration: Seamless integration with fragmented healthcare IT (EHRs, PACS, LIS) is non-negotiable. Requires robust APIs, adherence to standards (FHIR, DICOM), and minimizing workflow disruption. Products simplifying integration gain a significant edge.">
+                            <p>Seamless integration with fragmented healthcare IT (EHRs, PACS, LIS) is non-negotiable. Requires robust APIs, adherence to standards (FHIR, DICOM), and minimizing workflow disruption. Products simplifying integration gain a significant edge.</p>
+                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="loading-spinner"></div></button>
+                            <div class="llm-response-area hidden"></div>
+                        </div>
+                    </div>
+                    <div class="uber-accordion">
+                        <div class="uber-accordion-header">
+                            <span>Sustainable Monetization Models</span>
+                            <span class="plus-minus">+</span>
+                        </div>
+                        <div class="uber-accordion-content" data-content="Sustainable Monetization Models: Align with value-based care. Models should reflect tangible improvements in outcomes, efficiency, and cost reduction. Options: SaaS subscriptions, outcome-based pricing, hybrid models. Proving ROI by contributing to the 'triple aim' (better experience, population health, lower cost) is key.">
+                            <p>Align with value-based care. Models should reflect tangible improvements in outcomes, efficiency, and cost reduction. Options: SaaS subscriptions, outcome-based pricing, hybrid models. Proving ROI by contributing to the "triple aim" (better experience, population health, lower cost) is key.</p>
+                            <button class="llm-button summarize-button">Summarize with AI ✨ <div class="loading-spinner"></div></button>
+                            <div class="llm-response-area hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ask-medgemma-ai" class="pt-20 -mt-20 mb-16">
+            <div class="uber-section">
+                <h2 class="uber-section-title">AI Assistant ✨</h2>
+                <p class="uber-text text-xl">Ask our AI assistant about MedGemma 4B IT, its applications, or the healthcare landscape.</p>
+                <textarea id="ai-question-input" class="uber-input h-32 resize-y mb-6" placeholder="What are the main challenges in healthcare that MedGemma can address?"></textarea>
+                <button id="ask-ai-button" class="uber-button">
+                    Ask MedGemma ✨ 
+                    <div class="uber-spinner hidden"></div>
+                </button>
+                <div id="ai-response-area" class="uber-response-area hidden"></div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="pt-20 -mt-20 mb-16">
+            <div class="uber-section">
+                <h2 class="uber-section-title">Conclusion & Recommendations</h2>
+                <p class="uber-text text-xl">MedGemma 4B IT is a transformative foundational AI model poised to address significant unmet needs in healthcare. This final section summarizes the key takeaways and strategic recommendations for developers aiming to leverage MedGemma's capabilities to create high-impact, clinically viable products. The path to redefining healthcare involves a blend of technological innovation and responsible, ethical deployment.</p>
+                <p class="uber-text">MedGemma 4B IT's robust multimodal capabilities (medical image and text comprehension across radiology, dermatology, ophthalmology, histopathology) position it to address pressing healthcare needs and offer significant product innovation opportunities.</p>
+                <h3 class="uber-subsection-title">Strategic Recommendations:</h3>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li><strong>Focused Product Development:</strong> Prioritize high-potential use cases (Remote Diagnostics, Clinical Decision Support, Patient Engagement, Medical Education).</li>
+                    <li><strong>Rigorous Validation & Fine-tuning:</strong> Commit to extensive fine-tuning and clinical validation as MedGemma is "not clinical grade."</li>
+                    <li><strong>Proactive Ethical AI & Trust-Building:</strong> Incorporate XAI, bias mitigation, and human-in-the-loop design.</li>
+                    <li><strong>Interoperability as a Core Feature:</strong> Ensure seamless integration with existing healthcare IT.</li>
+                    <li><strong>Value-Driven Monetization:</strong> Align models with value-based care, demonstrating ROI.</li>
+                    <li><strong>Phased Deployment:</strong> Start with assistive tools to build confidence and gather data before higher-stakes applications.</li>
+                </ul>
+                <p class="mt-4">By blending cutting-edge innovation with responsible deployment, developers can create solutions that transform patient care, enhance professional capabilities, and drive efficiency in the global healthcare ecosystem.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="uber-footer">
+        <div class="uber-container">
+            <p class="text-lg font-semibold">© 2025 MedGemma Product Opportunities</p>
+            <p class="text-sm mt-2 opacity-60">Powered by advanced AI research and strategic healthcare insights</p>
+        </div>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Update navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.className = 'uber-nav-link';
+        });
+
+        // Update tab functionality
+        const tabButtons = document.querySelectorAll('.uber-tab');
+        const useCaseContents = document.querySelectorAll('.use-case-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                const tabId = this.getAttribute('data-tab');
+                useCaseContents.forEach(content => {
+                    if (content.id === tabId) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Update accordion functionality
+        const accordionHeaders = document.querySelectorAll('.uber-accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const isOpen = content.style.display === 'block';
+                
+                if (isOpen) {
+                    content.style.display = 'none';
+                    this.querySelector('.plus-minus').textContent = '+';
+                } else {
+                    content.style.display = 'block';
+                    this.querySelector('.plus-minus').textContent = '−';
+                }
+            });
+        });
+
+        // Chart configurations with dark theme
+        const darkChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: { 
+                        color: '#ffffff',
+                        font: { family: 'Inter', size: 12, weight: '500' }
+                    }
+                },
+                title: {
+                    display: true,
+                    color: '#00d48a',
+                    font: { family: 'Inter', size: 16, weight: '600' }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.7)',
+                        font: { family: 'Inter' }
+                    },
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                },
+                x: {
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.7)',
+                        font: { family: 'Inter' }
+                    },
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                }
+            }
+        };
+
+        // Teledermatology Chart
+        const teledermatologyCtx = document.getElementById('teledermatologyChart')?.getContext('2d');
+        if (teledermatologyCtx) {
+            new Chart(teledermatologyCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2024 (Current)', '2030 (Projected)'],
+                    datasets: [{
+                        label: 'Market Size (USD)',
+                        data: [14.99 * 1e9, 41.08 * 1e9],
+                        backgroundColor: ['rgba(0, 212, 138, 0.6)', 'rgba(0, 212, 138, 0.8)'], // amber-600
+                        borderColor: ['rgba(0, 212, 138, 1)', 'rgba(0, 212, 138, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {...darkChartOptions, plugins: {...darkChartOptions.plugins, title: { display: true, text: 'Teledermatology Market (CAGR: 17.9%)', color: '#00d48a'}}}
+            });
+        }
+
+        // Wound Care Chart
+        const woundCareCtx = document.getElementById('woundCareChart')?.getContext('2d');
+        if (woundCareCtx) {
+            new Chart(woundCareCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2024 (Current)', '2034 (Projected)'],
+                    datasets: [{
+                        label: 'Market Size (USD)',
+                        data: [0.64 * 1e9, 12.9 * 1e9],
+                        backgroundColor: ['rgba(0, 212, 138, 0.6)', 'rgba(0, 212, 138, 0.8)'],
+                        borderColor: ['rgba(0, 212, 138, 1)', 'rgba(0, 212, 138, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {...darkChartOptions, plugins: {...darkChartOptions.plugins, title: { display: true, text: 'AI in Wound Care Market (CAGR: 35.03%)', color: '#00d48a'}}}
+            });
+        }
+        
+        // Radiology & Pathology Chart (Combined for simplicity, can be split if needed)
+        const radiologyPathologyCtx = document.getElementById('radiologyPathologyChart')?.getContext('2d');
+        if (radiologyPathologyCtx) {
+            new Chart(radiologyPathologyCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Radiology 2024', 'Radiology 2035', 'Pathology 2024', 'Pathology 2030'],
+                    datasets: [{
+                        label: 'Market Size (USD)',
+                        data: [2.2 * 1e9, 15.7 * 1e9, 87.2 * 1e6, 347.4 * 1e6],
+                        backgroundColor: [
+                            'rgba(0, 212, 138, 0.5)', // amber-600 lighter
+                            'rgba(0, 212, 138, 0.8)', // amber-600 darker
+                            'rgba(0, 184, 107, 0.5)', // amber-500 lighter
+                            'rgba(0, 184, 107, 0.8)'  // amber-500 darker
+                        ],
+                        borderColor: [
+                            'rgba(0, 212, 138, 1)', 
+                            'rgba(0, 212, 138, 1)',
+                            'rgba(0, 184, 107, 1)',
+                            'rgba(0, 184, 107, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {...darkChartOptions, plugins: {...darkChartOptions.plugins, title: { display: true, text: 'AI in Radiology (19.56% CAGR) & Pathology (26.5% CAGR) Markets', color: '#00d48a'}}}
+            });
+        }
+
+        // RPM Chart
+        const rpmCtx = document.getElementById('rpmChart')?.getContext('2d');
+        if (rpmCtx) {
+            new Chart(rpmCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2023 (Current)', '2032 (Projected)'],
+                    datasets: [{
+                        label: 'Market Size (USD)',
+                        data: [24.3 * 1e9, 116.29 * 1e9],
+                        backgroundColor: ['rgba(0, 212, 138, 0.6)', 'rgba(0, 212, 138, 0.8)'],
+                        borderColor: ['rgba(0, 212, 138, 1)', 'rgba(0, 212, 138, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {...darkChartOptions, plugins: {...darkChartOptions.plugins, title: { display: true, text: 'Remote Patient Monitoring Market (CAGR: 19.0%)', color: '#00d48a'}}}
+            });
+        }
+
+        // Gemini API Integration
+        const apiKey = "AIzaSyAaWjwg74-W_9k3IbkK-KQjkTri3wx2C4E"; // If you want to use models other than gemini-2.0-flash or imagen-3.0-generate-002, provide an API key here. Otherwise, leave this as-is.
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+        // Ask MedGemma AI Assistant
+        const askAiButton = document.getElementById('ask-ai-button');
+        const aiQuestionInput = document.getElementById('ai-question-input');
+        const aiResponseArea = document.getElementById('ai-response-area');
+        const askAiSpinner = askAiButton.querySelector('.loading-spinner');
+
+        if (askAiButton && aiQuestionInput && aiResponseArea) {
+            askAiButton.addEventListener('click', async function() {
+                const userQuestion = aiQuestionInput.value.trim();
+                if (!userQuestion) {
+                    aiResponseArea.textContent = 'Please enter a question.';
+                    aiResponseArea.classList.remove('hidden');
+                    return;
+                }
+
+                aiResponseArea.textContent = ''; // Clear previous response
+                aiResponseArea.classList.add('hidden');
+                askAiButton.disabled = true;
+                askAiSpinner.style.display = 'block'; // Show spinner
+
+                try {
+                    let chatHistory = [];
+                    // Provide context from the report. For a full-fledged app, this would be more sophisticated.
+                    // For this demo, we'll provide a general context.
+                    const reportContext = `The following is information from a report about MedGemma 4B IT, a multimodal AI model for healthcare. It addresses topics like MedGemma's capabilities (text and image processing, 128K token input), its performance benchmarks (e.g., MIMIC CXR F1: 88.9%, DermMCQA accuracy: 71.8%), key considerations for productization (it's a foundational model, not clinical grade, needs fine-tuning), deployment (Hugging Face, Vertex AI), healthcare unmet needs (professional shortages, data fragmentation, rising costs, demand for personalized care), and high-potential product use cases (tele-dermatology, wound care monitoring, clinical decision support, medical education simulations). Strategic imperatives include regulatory compliance (HIPAA, GDPR, FDA), ethical AI (bias, transparency, human-in-the-loop), robust data strategy, interoperability, and sustainable monetization.`;
+                    
+                    chatHistory.push({ role: "user", parts: [{ text: `${reportContext}\n\nUser Question: ${userQuestion}\n\nBased on the provided information, please answer the user's question concisely.` }] });
+
+                    const payload = { contents: chatHistory };
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        aiResponseArea.textContent = text;
+                    } else {
+                        aiResponseArea.textContent = 'Sorry, I could not generate a response. Please try again.';
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    aiResponseArea.textContent = 'An error occurred while fetching the AI response. Please try again later.';
+                } finally {
+                    aiResponseArea.classList.remove('hidden');
+                    askAiButton.disabled = false;
+                    askAiSpinner.style.display = 'none'; // Hide spinner
+                }
+            });
+        }
+
+        // Summarize Strategic Imperative buttons
+        const summarizeButtons = document.querySelectorAll('.summarize-button');
+        summarizeButtons.forEach(button => {
+            const spinner = button.querySelector('.loading-spinner');
+            const responseArea = button.nextElementSibling; // The div for the LLM response
+
+            button.addEventListener('click', async function() {
+                const accordionContent = this.closest('.accordion-content');
+                const contentToSummarize = accordionContent.getAttribute('data-content');
+
+                if (!contentToSummarize) {
+                    responseArea.textContent = 'No content to summarize.';
+                    responseArea.classList.remove('hidden');
+                    return;
+                }
+
+                responseArea.textContent = ''; // Clear previous response
+                responseArea.classList.add('hidden');
+                button.disabled = true;
+                spinner.style.display = 'block'; // Show spinner
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: `Summarize the following healthcare strategic imperative concisely, in 1-2 sentences: "${contentToSummarize}"` }] });
+
+                    const payload = { contents: chatHistory };
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        responseArea.textContent = text;
+                    } else {
+                        responseArea.textContent = 'Sorry, I could not generate a summary. Please try again.';
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    responseArea.textContent = 'An error occurred while fetching the AI summary. Please try again later.';
+                } finally {
+                    responseArea.classList.remove('hidden');
+                    button.disabled = false;
+                    spinner.style.display = 'none'; // Hide spinner
+                }
+            });
+        });
+
+    });
+</script>
+</body>
+</html>
